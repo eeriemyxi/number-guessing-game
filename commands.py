@@ -10,7 +10,7 @@ class Commands(CommandFunctions):
                 instance=self.start,
             ),
             info=dict(
-                desc="Get information about stuff like, difficulty and etc.\n    Keys:\n         difficulty : Get information about different difficulties, their name, What they do to make it harder.",
+                desc="Get information about stuff like, difficulty, etc.\n    Keys:\n         difficulty : Get information about different difficulties, their name, What they do to make it harder.",
                 instance=self.info,
             ),
             exit=dict(desc="Quit the game.", instance=self.exit_command),

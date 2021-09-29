@@ -39,6 +39,14 @@ def verify_difficulty(difficulty_name):
 
 class CommandFunctions:
     def help_command(self, input_text):
+        if ':' in input_text:
+            if (command_name := input_text.split(':')[1]) not in self.command_list:
+                print('Command named "{}" doesn\'t exist.'.format(command_name))
+                return
+            print(fancytext(command_name))
+            print('-'*30)
+            print(self.get(command_name, 'desc'))
+            return
         for key in self.command_list:
             print(key)
             print(f'    - {self.get(key, "desc")}')
