@@ -125,7 +125,27 @@ class CommandFunctions:
                     points += point_deduct(round_points, selected_difficulty)
 
     def info(self, input_text):
-        print("Called the info funtion!")
+        if ":" not in input_text:
+            print("Missing key name. Enter `help` for more info.")
+            return
+        key_name = input_text.split(":")[1]
+        keys = ("difficulty")
+        if key_name not in keys:
+            print("Invalid key name. Enter `help` for more info.")
+            return
+        if key_name == "difficulty":
+            for difficulty in DIFFICULTIES:
+                difficulty_obj = DIFFICULTIES[difficulty]
+                print(fancytext(difficulty.title()))
+                print("-" * 30)
+                print(
+                    "The number to guess ranges from {range_1} to {range_2}. You get {max_points} points per round. {deduct} points will be deducted if you fail to guess the number.".format(
+                        range_1=difficulty_obj.get("range")[0],
+                        range_2=difficulty_obj.get("range")[1],
+                        max_points=difficulty_obj.get("points"),
+                        deduct=difficulty_obj.get("deduct"),
+                    )
+                )
 
     def exit_command(self, input_text):
         exit()
